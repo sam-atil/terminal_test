@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Deep Dream</title>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <div class="main-content">
+            <!--Terminal Panel-->
+            <div class="terminal">
+                <div id="logs" class = "logs"></div>
+
+                <div class="input-row">
+                    <span class="prompt">C: \user\portfolio&gt;</span>
+                    <input id="input" autocomplete="off"/>
+                </div>
+            </div>
+
+            <!--Right Column Panels-->
+            <div class="sidebar">
+
+                <!--Logo-->
+                <div class="panel logo-panel">
+
+                    <pre class="ascii-logo">
+                      xxxxxxxx
+     ---------------xxxxxxxxxxxxx
+    |-----------------xxxxxxxxxxxxx
+    ||          _..._    xxxxxxxxxxx
+    ||        .' .--''     xxxxxxxxx
+    ||       :  /            ||xxxxxx
+    ||       :  :            || xxx
+    ||       `.  \..         ||  xx
+    ||         `-.::''       ||  (_)
+    |-------------------------|
+     -------------------------
+               |   |
+            -----------
+                    </pre>
+
+                </div>
+
+                <!--Status-->
+                <div class="panel">
+                    <h3>STATUS</h3>
+                    <p>Response: 24h</p>
+                </div>
+            </div>
+        </div>
+        
+        <!--Window Layer-->
+        <div id = "window-layer"></div>
+
+        <script src="script.js"></script>
+    </body>
+</html>

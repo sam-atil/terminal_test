@@ -1,0 +1,315 @@
+/* ==============================*/
+/* Color System                  */
+/* ==============================*/
+
+:root {
+    --bg-page: #05050a;
+    --bg-panel: #0b0f14;
+    --border-main: #00aaff;
+    --glow-primary: rgba(0, 170, 255, 0.18);
+    --glow-secondary: rgba(162, 80, 233, 0.2);
+}
+
+/* ==============================*/
+/* Base Layout                  */
+/* ==============================*/
+
+body {
+    margin: 0;
+    background: var(--bg-page);
+    color: #eaeaf0;
+    font-family: monospace;
+    overflow: hidden;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    grid-template-rows: 1fr;
+    gap: 18px;
+
+    height: 100vh;
+    padding: 18px;
+    box-sizing: border-box;
+}
+
+/* ==============================*/
+/* Core Panels (Terminal System)*/
+/* ==============================*/
+
+.terminal,
+.panel {
+    background: var(--bg-panel);
+    border: 2px solid var(--border-main);
+    border-radius: 6px;
+}
+
+/* Terminal Column */
+.terminal {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+/* Sidebar Column */
+.sidebar {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 18px;
+}
+
+/* Panel Base */
+.panel {
+    padding: 16px;
+    overflow: hidden;
+}
+
+.panel h3,
+.panel p {
+    text-align: center;
+}
+
+/* ==============================*/
+/* Logs / Input System          */
+/* ==============================*/
+
+.logs {
+    flex: 1;
+    overflow-y: auto;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #f0eaff;
+}
+
+.logs div {
+    text-shadow: 0 0 6px rgba(162, 80, 233, 0.2);
+}
+
+.input-row {
+    flex-shrink: 0;
+}
+
+.prompt {
+    color: #4da6ff;
+    margin-right: 8px;
+    text-shadow: 0 0 8px rgba(162, 80, 233, 0.6);
+}
+
+input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    flex: 1;
+    font-family: monospace;
+}
+
+/* ==============================*/
+/* Logo Panel                   */
+/* ==============================*/
+
+.logo-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ascii-logo {
+    margin: 0;
+    font-family: "Cascadia Code", "JetBrains Mono", "Fira Code", monospace;
+    font-size: 14px;
+    line-height: 1;
+    white-space: pre;
+
+    color: white;
+    text-shadow: 0 0 6px var(--glow-secondary);
+
+    user-select: none;
+    display: block;
+}
+
+/* ==============================*/
+/* Command Links                */
+/* ==============================*/
+
+.command-link {
+    cursor: pointer;
+    width: fit-content;
+    color: white;
+    transition: 0.15s ease;
+    text-shadow: 0 0 8px rgba(162, 80, 233, 0.15);
+}
+
+.command-link:hover {
+    color: #4da6ff;
+    text-shadow: 0 0 12px rgba(228, 104, 247, 0.45);
+}
+
+/* ==============================*/
+/* Window System                */
+/* ==============================*/
+
+#window-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+}
+
+.window {
+    position: absolute;
+    top: 120px;
+    left: 120px;
+    width: 700px;
+
+    background: var(--bg-page);
+    border: 2px solid var(--border-main);
+    border-radius: 12px;
+
+    pointer-events: auto;
+
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.2s ease;
+}
+
+.window.open {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.window-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 12px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 13px;
+
+    cursor: grab;
+    color: var(--border-main);
+}
+
+.window-header:active {
+    cursor: grabbing;
+}
+
+.window-body {
+    padding: 16px;
+    font-size: 14px;
+    max-height: 900px;
+    overflow-y: auto;
+    color: #eaeaf0;
+}
+
+.close-btn {
+    cursor: pointer;
+    color: #4da6ff;
+}
+
+.close-btn:hover {
+    color: #ffffff;
+}
+
+/* ==============================*/
+/* Project Window Layout         */
+/* ==============================*/
+
+.project-window {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Top Section */
+.project-main {
+    text-align: center;
+}
+
+.project-main h1 {
+    margin-bottom: 6px;
+    font-size: 18px;
+    color: #4da6ff;
+    text-shadow: 0 0 8px rgba(77,166,255,0.4);
+}
+
+/* Columns */
+.project-columns {
+    display: flex;
+    gap: 16px;
+}
+
+.project-left {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.project-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Cards (adapted to terminal style) */
+.project-card-block,
+.project-card-side {
+    padding: 12px;
+    border: 2px solid var(--border-main);
+    border-radius: 8px;
+
+    background: var(--bg-panel);
+}
+
+.project-card-block h3,
+.project-card-side h3 {
+    margin-bottom: 6px;
+    font-size: 13px;
+    color: #9ad1ff;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .project-columns {
+        flex-direction: column;
+    }
+}
+
+/* ==============================*/
+/* Utilities                    */
+/* ==============================*/
+
+.no-select {
+    user-select: none;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(162, 80, 233, 0.3);
+    border-radius: 10px;
+}
+
+/* ==============================*/
+/* Responsive (keeps grid idea) */
+/* ==============================*/
+
+@media (max-width: 900px) {
+    .main-content {
+        grid-template-columns: 1fr;
+        grid-template-rows: 70vh 30vh;
+    }
+
+    .sidebar {
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .ascii-logo {
+        font-size: 11px;
+    }
+}
