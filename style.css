@@ -157,8 +157,8 @@ input {
 
 .window {
     position: absolute;
-    top: 120px;
-    left: 120px;
+    top: 0;
+    left: 0;
     width: 700px;
 
     background: var(--bg-page);
@@ -168,8 +168,8 @@ input {
     pointer-events: auto;
 
     opacity: 0;
-    transform: scale(0.95);
-    transition: all 0.2s ease;
+    transform: translate(120px, 120px);
+    will-change: transform;
 }
 
 .window.open {
@@ -210,15 +210,66 @@ input {
     color: #ffffff;
 }
 
+
+/* Cards (adapted to terminal style) */
+.card-block {
+    padding: 12px;
+    border: 2px solid white;
+    border-radius: 8px;
+
+    background: var(--bg-panel);
+}
+
+.card-block h3 {
+    margin-bottom: 6px;
+    font-size: 13px;
+    color: #9ad1ff;
+}
+
+/* ==============================*/
+/* About Window Layout         */
+/* ==============================*/
+
+.about-column {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+@media (max-width: 800px) {
+    .about-column {
+       grid-template-columns: 1fr; 
+    }
+}
+
+.work-column {
+    display: grid;
+    grid-template-columns: repeat(2, 200px); /* fixed width pills */
+    justify-content: center;  /* ✅ centers the whole row */
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.about-sub {
+    display: block;
+    font-size: 0.9rem;
+    color: white;
+}
+
+.about-time {
+    display: block;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.about-main {
+    text-align: center;
+}
+
+
 /* ==============================*/
 /* Project Window Layout         */
 /* ==============================*/
-
-.project-window {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
 
 /* Top Section */
 .project-main {
@@ -229,7 +280,6 @@ input {
     margin-bottom: 6px;
     font-size: 18px;
     color: #4da6ff;
-    text-shadow: 0 0 8px rgba(77,166,255,0.4);
 }
 
 /* Columns */
@@ -250,23 +300,6 @@ input {
     display: flex;
     flex-direction: column;
     gap: 12px;
-}
-
-/* Cards (adapted to terminal style) */
-.project-card-block,
-.project-card-side {
-    padding: 12px;
-    border: 2px solid var(--border-main);
-    border-radius: 8px;
-
-    background: var(--bg-panel);
-}
-
-.project-card-block h3,
-.project-card-side h3 {
-    margin-bottom: 6px;
-    font-size: 13px;
-    color: #9ad1ff;
 }
 
 /* Responsive */
