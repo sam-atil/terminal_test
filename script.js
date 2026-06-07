@@ -243,9 +243,7 @@ async function handleCommand(cmd) {
 
   //Skills command Logic
   else if (command === "skills") {
-    createWindow("skills", "Skills", `
-      <p>I build AI-driven interfaces and systems.</p>
-    `);
+    createWindow("skills", "Skills", renderSkills(skillData));
   }
 
   //Project Command Logic
@@ -393,9 +391,47 @@ const aboutData = {
     {value: "3", label: "Projects Completed"},
     {value: "2+", label: "Years Experience"}
   ]
-}
+};
 
+const skillData = {
+  languages: [
+    {name: "Python", level: "Advanced"},
+    {name: "JavaScript", level: "Advanced"},
+    {name: "C++", level: "Basic"}
+  ],
 
+  libraries: [
+    {name: "NumPy", level: "Advanced"},
+    {name: "Pandas", level: "Intermediate"},
+    {name: "MatPlotLib", level: "Intermediate"},
+    {name: "TensorFlow", level: "Advanced"},
+    {name: "Sklearn", level: "Basic"},
+    {name: "PyTorch", level: "Advanced"},
+    {name: "OpenVC", level: "Basic"}
+  ],
+
+  backend: [
+    {name: "Flask", level: "Intermediate"},
+    {name: "Jinja2", level: "Intermediate"}
+  ],
+
+  frontend: [
+    {name: "HTML", level: "Intermediate"},
+    {name: "CSS", level: "Intermediate"}
+  ],
+
+  databases: [
+    {name: "PostgreSQL", level: "Basic"}
+  ],
+
+  other: []
+};
+
+const skillOrder = {
+  Advanced: 0,
+  Intermediate: 1,
+  Basic: 2
+};
 
 /* ==============================*/
 /* Window Page Creation Logic    */
@@ -449,6 +485,38 @@ function renderStats(stats){
   `).join("");
 }
 
+function renderSkillLevel(skill) {
+  return `
+    <span class="skill-level ${skill.level}">
+      ${skill.name}
+    </span>
+  `
+}
+
+function renderSkillCard(title, skills) {
+  const sortedSkills = [...skills].sort((a,b) => skillOrder[a.level] - skillOrder[b.level]);
+
+  const content = skills.length > 0 ? `
+      <div class="skill-list">
+        ${sortedSkills.map(renderSkillLevel).join("")}
+      </div>
+    ` : `
+      <p class="placeholder">
+        Future Additions
+      </p>
+    `;
+
+  return `
+    <div class="card-block">
+      <h3>${title}</h3>
+      ${content}
+    </div>
+  `;
+}
+
+
+
+
 /* ======= */
 /*  About  */
 /* ======= */
@@ -470,6 +538,31 @@ function renderAbout(data) {
         ${renderStats(data.stats)}
       </div>
   `
+}
+
+/* ========= */
+/*   Skill   */
+/* ========= */
+
+function renderSkills() {
+  return `
+    <div class="skill-main">
+      <h1>Skills</h1>
+      <div class="skill-legend">
+        <span class="skill-level Advanced">Advanced</span>
+        <span class="skill-level Intermediate">Intermediate</span>
+        <span class="skill-level Basic">Basic</span>
+      </div>
+
+      <div class="skills-grid">
+        ${renderSkillCard("Languages", skillData.languages)}
+        ${renderSkillCard("Libraries", skillData.libraries)}
+        ${renderSkillCard("Backend", skillData.backend)}
+        ${renderSkillCard("Frontend", skillData.frontend)}
+        ${renderSkillCard("Databases", skillData.databases)}
+        ${renderSkillCard("Other", skillData.other)}
+      </div>
+    </div>`;
 }
 
 /* ========= */

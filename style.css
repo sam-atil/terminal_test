@@ -226,6 +226,16 @@ input {
     color: #9ad1ff;
 }
 
+.card-block ul {
+    text-align: left;
+    padding-left: 1.5rem;
+    margin: 0;
+}
+
+.card-block li {
+    text-align: left;
+}
+
 /* ==============================*/
 /* About Window Layout         */
 /* ==============================*/
@@ -266,6 +276,88 @@ input {
     text-align: center;
 }
 
+/* ==============================*/
+/* Skill Window Layout           */
+/* ==============================*/
+
+.skill-main {
+    text-align: center;
+}
+
+.skill-legend {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.skill-level{
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.skill-level.Advanced {
+    background: var(--bg-panel);
+    color: white;
+    border:2px solid  #0000ff;
+}
+.skill-level.Intermediate {
+    background: var(--bg-panel);
+    color: white;
+    border:2px solid #38a5ff;
+}
+.skill-level.Basic {
+    background: var(--bg-panel);
+    color: white;
+    border:2px solid #8ffcff;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.skill-badge {
+    display: inline-block;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.9rem;
+}
+.skill-badge.Advanced {
+    background: var(--bg-panel);
+    color: white;
+    border:1px solid  #0000ff;
+}
+.skill-badge.Intermediate {
+    background: var(--bg-panel);
+    color: white;
+    border:1px solid #38a5ff;
+}
+.skill-badge.Basic {
+    background: var(--bg-panel);
+    color: white;
+    border:1px solid #8ffcff;
+}
+
+.placeholder {
+    color: white;
+    font-style: italic;
+    opacity: 0.7;
+}
 
 /* ==============================*/
 /* Project Window Layout         */
