@@ -273,9 +273,7 @@ async function handleCommand(cmd) {
 
   //Contact Command Logic
   else if (command === "contact") {
-    createWindow("contact", "Contact", `
-      <p>I build AI-driven interfaces and systems.</p>
-    `);
+    createWindow("contact", "Contact", renderContact(contactData));
   }
 
 
@@ -433,6 +431,28 @@ const skillOrder = {
   Basic: 2
 };
 
+const contactData = {
+  links: [
+    {label: "Email", value: "samuel4atilano@icloud.com"},
+    {label: "Phone", value: "(915)-246-4364"},
+    {label: "LinkedIn", value: "View Profile", href: "https://www.linkedin.com/in/samuel-atilano-a8b311293/"},
+    {label: "GitHub", value: "Open GitHub", href: "https://github.com/sam-atil"},
+  ],
+
+  availability: "Open to Work",
+
+  content: {
+    title: "Contact Me",
+    roles: [
+      "Machine Learning Engineer",
+      "Software Engineer",
+      "AI Engineer",
+      "Computer Vision Engineer"
+    ],
+    message: "Email is the best way to reach to me! I typically response within 24-48 hours."
+  }
+}
+
 /* ==============================*/
 /* Window Page Creation Logic    */
 /* ==============================*/
@@ -515,6 +535,35 @@ function renderSkillCard(title, skills) {
 }
 
 
+function renderContactPill(contact){
+  const content = `
+    <span>${contact.label}</span>
+    <p>${contact.value}</p>
+  `;
+
+  if (contact.href) {
+    return `
+      <a class="contact-link" href="${contact.href}" target="_blank" rel="Link Err">
+        ${content}
+      </a>
+    `
+  }
+
+
+  return `
+    <div class="card-block">
+      ${content}
+    </div>
+  `;
+}
+
+function renderContactGrid() {
+  return `
+    <div class="contact-grid">
+      ${contactData.links.map(renderContactPill).join("")}
+    </div>
+  `;
+}
 
 
 /* ======= */
@@ -596,6 +645,33 @@ function renderProject(project) {
 }
 
 
+/* ========= */
+/*  Contact  */
+/* ========= */
+
+function renderContactMain() {
+  return `
+    <div class="card-block contact-main">
+      <h2>${contactData.content.title}</h2>
+      <p>${contactData.availability}</p>
+      <div class="contact-roles">
+        <p>Roles Seeking:</p>
+        ${contactData.content.roles.map(role => `<span class="role-pill">${role}, </span>`).join("")}
+      </div>
+      <p>${contactData.content.message}</p>
+    </div>
+  `;
+}
+
+function renderContact() {
+  return `
+    <div class="contact-container">
+      <h1>Contact</h1>
+      ${renderContactGrid()}
+      ${renderContactMain()}
+    </div>
+  `;
+}
 
 /* ==============================*/
 /* Running Program               */

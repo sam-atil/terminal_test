@@ -236,6 +236,7 @@ input {
     text-align: left;
 }
 
+
 /* ==============================*/
 /* About Window Layout         */
 /* ==============================*/
@@ -437,4 +438,31 @@ input {
     .ascii-logo {
         font-size: 11px;
     }
+}
+
+
+/* ==============================*/
+/* Contact Window Layout         */
+/* ==============================*/
+
+.contact-main {
+    text-align: center;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.contact-link {
+    padding: 12px;
+    border: 2px solid white;
+    border-radius: 8px;
+
+    background: var(--bg-panel);
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
 }
